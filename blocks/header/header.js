@@ -60,7 +60,7 @@ function focusNavSection() {
  */
 function toggleAllNavSections(sections, expanded = false) {
   if (!sections) return;
-  sections.querySelectorAll('.default-content-wrapper > .nav-list > .nav-item').forEach((section) => {
+  sections.querySelectorAll('.default-content-wrapper li').forEach((section) => {
     section.setAttribute('aria-expanded', expanded);
   });
 }
@@ -131,12 +131,12 @@ export default async function decorate(block) {
   });
   nav.classList.add('header-nav');
 
-  nav.querySelectorAll('a').forEach((link) => link.classList.add('nav-link'));
+  nav.querySelectorAll('a, button').forEach((link) => link.classList.add('nav-link'));
   nav.querySelectorAll('ul').forEach((list) => list.classList.add('nav-list'));
   nav.querySelectorAll('li').forEach((item) => item.classList.add('nav-item'));
 
   const navBrand = nav.querySelector('.nav-brand');
-  const brandLink = navBrand ? navBrand.querySelector('a') : null;
+  const brandLink = navBrand ? navBrand.querySelector('.button, a') : null;
   if (brandLink) {
     brandLink.classList.add('nav-brand-link');
     const buttonContainer = brandLink.closest('.button-container');
@@ -145,7 +145,7 @@ export default async function decorate(block) {
 
   const navSections = nav.querySelector('.nav-sections');
   if (navSections) {
-    navSections.querySelectorAll(':scope .default-content-wrapper > .nav-list > .nav-item').forEach((navSection) => {
+    navSections.querySelectorAll(':scope .default-content-wrapper li').forEach((navSection) => {
       navSection.classList.add('nav-section');
       if (navSection.querySelector('ul')) {
         navSection.classList.add('nav-drop');
