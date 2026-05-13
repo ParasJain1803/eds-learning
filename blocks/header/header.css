@@ -54,4 +54,5 @@ header {
 
 .default-content-wrapper {
   display: flex;
+  align-items: center;
 }
