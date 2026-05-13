@@ -6,12 +6,12 @@ export default function decorate(block) {
     const btn = document.createElement('button');
     btn.className = 'accordion-trigger';
     btn.setAttribute('aria-expanded', 'false');
-    btn.innerHTML = question.innerHTML;
+    btn.append(...question.childNodes);
 
     const panel = document.createElement('div');
     panel.className = 'accordion-panel';
     panel.setAttribute('hidden', '');
-    panel.innerHTML = answer.innerHTML;
+    panel.append(...answer.childNodes);
 
     btn.addEventListener('click', () => {
       const open = btn.getAttribute('aria-expanded') === 'true';
@@ -19,7 +19,6 @@ export default function decorate(block) {
       panel.toggleAttribute('hidden', open);
     });
 
-    row.textContent = '';
-    row.append(btn, panel);
+    row.replaceChildren(btn, panel);
   });
 }

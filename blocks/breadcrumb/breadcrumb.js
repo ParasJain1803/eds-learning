@@ -6,7 +6,6 @@ export default function decorate(block) {
   const ol = document.createElement('ol');
   ol.className = 'breadcrumb-list';
 
-  // Always add Home as first crumb
   const homeLi = document.createElement('li');
   homeLi.className = 'breadcrumb-item';
   const homeLink = document.createElement('a');
@@ -15,7 +14,6 @@ export default function decorate(block) {
   homeLi.append(homeLink);
   ol.append(homeLi);
 
-  // Add each authored row as a crumb
   rows.forEach((row, i) => {
     const [labelCell, hrefCell] = row.children;
     const li = document.createElement('li');

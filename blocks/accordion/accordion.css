@@ -23,14 +23,14 @@
   cursor: pointer;
   font-size: 1rem;
   font-weight: 600;
-  color: var(--text-color, #1a1a1a);
+  color: #1a1a1a;
   text-align: left;
   gap: 1rem;
   transition: color 0.2s ease;
 }
 
 .accordion-trigger:hover {
-  color: var(--link-color, #0066cc);
+  color: #0066cc;
 }
 
 .accordion-trigger::after {
@@ -39,19 +39,18 @@
   font-weight: 300;
   flex-shrink: 0;
   transition: transform 0.25s ease;
-  color: var(--link-color, #0066cc);
+  color: #0066cc;
 }
 
 .accordion-trigger[aria-expanded='true']::after {
   content: '-';
 }
 
-/* The answer panel */
 .accordion-panel {
   padding: 0 0.5rem 1.2rem;
   font-size: 0.95rem;
   line-height: 1.7;
-  color: var(--text-color, #444);
+  color:  #444;
   animation: accordion-open 0.2s ease;
 }
 

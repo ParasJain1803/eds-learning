@@ -4,8 +4,7 @@ export default function decorate(block) {
   const ul = document.createElement('ul');
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
-    li.innerHTML = row.innerHTML;
-    // Optimize card images — NOT eager (below fold)
+    li.append(...row.cloneNode(true).childNodes);
     li.querySelectorAll('img').forEach((img) => {
       img.closest('picture').replaceWith(
         createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])
@@ -13,6 +12,5 @@ export default function decorate(block) {
     });
     ul.append(li);
   });
-  block.textContent = '';
-  block.append(ul);
+  block.replaceChildren(ul);
 }

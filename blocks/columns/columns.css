@@ -8,5 +8,4 @@
   padding: 1rem;
 }
 
-/* 2-col layout */
 .columns-2-cols > div > div { flex-basis: 50%; }

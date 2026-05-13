@@ -14,14 +14,12 @@
 }
 
 
-/* Text side */
 .hero .hero-text {
   padding: 5rem 3rem 5rem 5rem;
   z-index: 1;
   animation: hero-fadein 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* Image side */
 .hero .hero-media {
   height: 100%;
   position: relative;
@@ -29,7 +27,6 @@
   animation: hero-slidein 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
 }
 
-/* If only one column (no image authored), go full width */
 .hero .hero-full {
   grid-column: 1 / -1;
   padding: 8rem 5rem;
@@ -47,7 +44,6 @@
   filter: brightness(0.85) contrast(1.05);
 }
 
-/* Typography */
 .hero h1 {
   font-family: 'Georgia', 'Times New Roman', serif;
   font-size: clamp(2.8rem, 6vw, 5.5rem);
@@ -58,7 +54,6 @@
   letter-spacing: -0.02em;
 }
 
-/* Accent highlight on last word of h1 */
 .hero h1 em {
   font-style: normal;
   color: #e8ff00;
@@ -73,7 +68,6 @@
   font-family: 'Georgia', serif;
 }
 
-/* Buttons inside hero */
 .hero .button-wrapper {
   display: flex;
   gap: 1rem;
