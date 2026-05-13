@@ -1,13 +1,12 @@
-.cards-list {
+.cards ul {
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
   gap: 1.5rem;
   padding: 0;
 }
 
 .cards li {
   border: 1px solid #e0e0e0;
+  display: flex;
   border-radius: 8px;
   overflow: hidden;
 }
