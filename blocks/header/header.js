@@ -40,7 +40,7 @@ function closeOnFocusLost(e) {
 
 function openOnKeydown(e) {
   const focused = document.activeElement;
-  const isNavDrop = focused.className === 'nav-drop';
+  const isNavDrop = focused.classList.contains('nav-drop');
   if (isNavDrop && (e.code === 'Enter' || e.code === 'Space')) {
     const dropExpanded = focused.getAttribute('aria-expanded') === 'true';
     // eslint-disable-next-line no-use-before-define
@@ -60,7 +60,7 @@ function focusNavSection() {
  */
 function toggleAllNavSections(sections, expanded = false) {
   if (!sections) return;
-  sections.querySelectorAll('.nav-sections .default-content-wrapper > ul > li').forEach((section) => {
+  sections.querySelectorAll('.default-content-wrapper > .nav-list > .nav-item').forEach((section) => {
     section.setAttribute('aria-expanded', expanded);
   });
 }
@@ -129,18 +129,27 @@ export default async function decorate(block) {
     const section = nav.children[i];
     if (section) section.classList.add(`nav-${c}`);
   });
+  nav.classList.add('header-nav');
+
+  nav.querySelectorAll('a').forEach((link) => link.classList.add('nav-link'));
+  nav.querySelectorAll('ul').forEach((list) => list.classList.add('nav-list'));
+  nav.querySelectorAll('li').forEach((item) => item.classList.add('nav-item'));
 
   const navBrand = nav.querySelector('.nav-brand');
-  const brandLink = navBrand.querySelector('.button');
+  const brandLink = navBrand ? navBrand.querySelector('a') : null;
   if (brandLink) {
-    brandLink.className = '';
-    brandLink.closest('.button-container').className = '';
+    brandLink.classList.add('nav-brand-link');
+    const buttonContainer = brandLink.closest('.button-container');
+    if (buttonContainer) buttonContainer.classList.add('nav-brand-container');
   }
 
   const navSections = nav.querySelector('.nav-sections');
   if (navSections) {
-    navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
-      if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
+    navSections.querySelectorAll(':scope .default-content-wrapper > .nav-list > .nav-item').forEach((navSection) => {
+      navSection.classList.add('nav-section');
+      if (navSection.querySelector('ul')) {
+        navSection.classList.add('nav-drop');
+      }
       navSection.addEventListener('click', () => {
         if (isDesktop.matches) {
           const expanded = navSection.getAttribute('aria-expanded') === 'true';

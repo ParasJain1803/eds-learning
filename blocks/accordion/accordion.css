@@ -43,7 +43,7 @@
 }
 
 .accordion-trigger[aria-expanded='true']::after {
-  content: '−';
+  content: '-';
 }
 
 /* The answer panel */
