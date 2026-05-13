@@ -1,15 +1,184 @@
-.hero {
-  min-height: 60vh;
-  display: flex;
-  align-items: center;
-  padding: 2rem;
+.hero-wrapper {
+  margin: 0;
+  padding: 0;
 }
 
+.hero {
+  position: relative;
+  min-height: 88vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  background: #0a0a0a;
+  overflow: hidden;
+  gap: 0;
+}
+
+/* Decorative diagonal accent */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  right: 28%;
+  width: 2px;
+  height: 130%;
+  background: #e8ff00;
+  opacity: 0.15;
+  transform: rotate(12deg);
+  pointer-events: none;
+}
+
+/* Text side */
+.hero > div:first-child {
+  padding: 5rem 3rem 5rem 5rem;
+  z-index: 1;
+  animation: hero-fadein 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Image side */
+.hero > div:last-child {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  animation: hero-slidein 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+/* If only one column (no image authored), go full width */
+.hero > div:only-child {
+  grid-column: 1 / -1;
+  padding: 8rem 5rem;
+  text-align: left;
+  max-width: 900px;
+}
+
+.hero picture,
 .hero img {
   width: 100%;
+  height: 100%;
   object-fit: cover;
+  display: block;
+  min-height: 88vh;
+  filter: brightness(0.85) contrast(1.05);
 }
 
-.hero-content h1 {
-  font-size: 2.5rem;
+/* Typography */
+.hero h1 {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  color: #f5f5f5;
+  margin: 0 0 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+/* Accent highlight on last word of h1 */
+.hero h1 em {
+  font-style: normal;
+  color: #e8ff00;
+}
+
+.hero p {
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  color: #888;
+  line-height: 1.7;
+  margin: 0 0 2.5rem;
+  max-width: 420px;
+  font-family: 'Georgia', serif;
+}
+
+/* Buttons inside hero */
+.hero .button-wrapper {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.hero .button {
+  display: inline-block;
+  padding: 0.85rem 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+  font-family: 'Georgia', serif;
+}
+
+.hero .button.primary {
+  background: #e8ff00;
+  color: #0a0a0a;
+  border: 2px solid #e8ff00;
+}
+
+.hero .button.primary:hover {
+  background: transparent;
+  color: #e8ff00;
+}
+
+.hero .button.secondary {
+  background: transparent;
+  color: #f5f5f5;
+  border: 2px solid #444;
+}
+
+.hero .button.secondary:hover {
+  border-color: #f5f5f5;
+}
+
+/* Scroll indicator */
+.hero::after {
+  content: 'scroll';
+  position: absolute;
+  bottom: 2rem;
+  left: 5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #888;
+  font-family: 'Georgia', serif;
+  writing-mode: vertical-rl;
+  opacity: 0.5;
+}
+
+/* Animations */
+@keyframes hero-fadein {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hero-slidein {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero > div:first-child {
+    padding: 4rem 1.5rem 2rem;
+    order: 2;
+  }
+
+  .hero > div:last-child {
+    order: 1;
+    height: 55vw;
+    min-height: 240px;
+  }
+
+  .hero picture,
+  .hero img {
+    min-height: unset;
+    height: 100%;
+  }
+
+  .hero::after { display: none; }
+  .hero::before { display: none; }
 }
