@@ -30,7 +30,7 @@
 }
 
 .accordion-trigger:hover {
-  color: #0066cc;
+  color: #06c;
 }
 
 .accordion-trigger::after {
@@ -39,7 +39,7 @@
   font-weight: 300;
   flex-shrink: 0;
   transition: transform 0.25s ease;
-  color: #0066cc;
+  color: #06c;
 }
 
 .accordion-trigger[aria-expanded='true']::after {
@@ -63,6 +63,7 @@
     opacity: 0;
     transform: translateY(-6px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -70,7 +71,7 @@
 }
 
 .accordion-trigger:focus-visible {
-  outline: 2px solid var(--link-color, #0066cc);
+  outline: 2px solid var(--link-color, #06c);
   outline-offset: 2px;
   border-radius: 2px;
 }
