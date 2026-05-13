@@ -10,7 +10,91 @@
   grid-template-columns: 1fr 1fr;
   align-items: center;
   overflow: hidden;
-  gap: 0;
+  gap: 0;/* =====================
+   HERO BLOCK STYLES
+   ===================== */
+
+/* Outer wrapper — dark background */
+.hero {
+  background-color: #111;
+  min-height: 500px;
+}
+
+/* The row inside the block — side by side layout */
+.hero > div {
+  display: flex;
+  flex-direction: row;
+  min-height: 500px;
+}
+
+/* LEFT SIDE — text */
+.hero > div > div:first-child {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 50px;
+  background-color: #111;
+}
+
+/* RIGHT SIDE — image */
+.hero > div > div:last-child {
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Make image fill the right side completely */
+.hero > div > div:last-child picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero > div > div:last-child img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Heading style */
+.hero h1 {
+  color: #ffffff;
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 20px 0;
+}
+
+/* Paragraph text */
+.hero p {
+  color: #aaaaaa;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 420px;
+}
+
+/* Mobile — stack vertically */
+@media (max-width: 700px) {
+  .hero > div {
+    flex-direction: column;
+  }
+
+  .hero > div > div:first-child {
+    padding: 40px 24px;
+    order: 2;
+  }
+
+  .hero > div > div:last-child {
+    order: 1;
+    height: 260px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+}
 }
 
 
