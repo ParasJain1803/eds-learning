@@ -7,7 +7,7 @@ export default function decorate(block) {
   // Make images responsive
   [...block.querySelectorAll('img')].forEach((img) => {
     img.closest('picture').replaceWith(
-      createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])
+      createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]),
     );
   });
 }

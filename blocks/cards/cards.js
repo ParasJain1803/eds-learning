@@ -7,7 +7,7 @@ export default function decorate(block) {
     li.append(...row.cloneNode(true).childNodes);
     li.querySelectorAll('img').forEach((img) => {
       img.closest('picture').replaceWith(
-        createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])
+        createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]),
       );
     });
     ul.append(li);
