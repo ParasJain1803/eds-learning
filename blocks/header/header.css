@@ -51,3 +51,7 @@ header {
   transition: color 0.15s ease;
   position: relative;
 }
+
+.default-content-wrapper {
+  display: flex;
+}
