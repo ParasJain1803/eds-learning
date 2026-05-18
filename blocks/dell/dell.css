@@ -21,13 +21,6 @@
   overflow: hidden;
   text-decoration: none;
   cursor: pointer;
-
-  /* subtle border */
-  outline: 1px solid rgba(255, 255, 255, 0.06);
-  transition: outline-color 0.25s ease,
-              background 0.25s ease,
-              transform 0.25s ease,
-              box-shadow 0.25s ease;
 }
 
 .category-grid__card:hover {
@@ -70,6 +63,6 @@
   filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.6));
 }
 
-.category-grid__card:hover .category-grid__img-wrap img {
-  transform: scale(1.04);
+.category-grid__card:hover .category-grid__img-wrap {
+   background: linear-gradient(160deg, #3a5a80 0%, #2a4060 100%);
 }
