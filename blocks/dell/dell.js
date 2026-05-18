@@ -20,6 +20,13 @@ export default function decorate(block) {
       let labelText = '';
       const allEls = [...col.querySelectorAll('p, h1, h2, h3, h4, h5, h6')];
       for (const el of allEls) {
+        // Check for text inside <a> tags too
+        const anchor = el.querySelector('a');
+        if (anchor && anchor.textContent.trim()) {
+          labelText = anchor.textContent.trim();
+          break;
+        }
+
         const text = [...el.childNodes]
           .filter((n) => n.nodeType === Node.TEXT_NODE)
           .map((n) => n.textContent.trim())
@@ -30,7 +37,6 @@ export default function decorate(block) {
           break;
         }
       }
-
       if (!labelText) {
         labelText = [...col.childNodes]
           .filter((n) => n.nodeType === Node.TEXT_NODE && n.textContent.trim())
