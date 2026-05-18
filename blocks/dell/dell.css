@@ -1,5 +1,5 @@
  
-.dell {
+.category-grid {
   --cg-bg:         #0d1117;
   --cg-card-bg:    #141b26;
   --cg-card-hover: #1a2436;
@@ -14,7 +14,8 @@
   font-family: var(--cg-font);
 }
  
-.dell__grid {
+/* ── Grid layout ──────────────────────────────────────── */
+.category-grid__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--cg-gap);
@@ -22,7 +23,8 @@
   margin: 0 auto;
 }
  
-.dell__card {
+/* ── Card ─────────────────────────────────────────────── */
+.category-grid__card {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -31,17 +33,24 @@
   overflow: hidden;
   text-decoration: none;
   cursor: pointer;
+ 
+  /* subtle border */
   outline: 1px solid rgba(255, 255, 255, 0.06);
+  transition: outline-color 0.25s ease,
+              background 0.25s ease,
+              transform 0.25s ease,
+              box-shadow 0.25s ease;
 }
  
-.dell__card:hover {
+.category-grid__card:hover {
   background: var(--cg-card-hover);
   outline-color: rgba(74, 144, 217, 0.45);
   transform: translateY(-3px);
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55);
 }
  
-.dell__label {
+/* ── Category label ───────────────────────────────────── */
+.category-grid__label {
   display: block;
   padding: 14px 16px 10px;
   font-size: 0.95rem;
@@ -55,7 +64,8 @@
   padding-left: 10px;
 }
  
-.dell__img-wrap {
+/* ── Image wrapper ────────────────────────────────────── */
+.category-grid__img-wrap {
   flex: 1;
   display: flex;
   align-items: center;
@@ -65,11 +75,11 @@
   min-height: 180px;
 }
  
-.dell__img-wrap picture {
+.category-grid__img-wrap picture {
   display: contents;
 }
  
-.dell__img-wrap img {
+.category-grid__img-wrap img {
   width: 100%;
   height: 200px;
   object-fit: contain;
@@ -78,7 +88,7 @@
   filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.6));
 }
  
-.dell__card:hover .dell__img-wrap img {
+.category-grid__card:hover .category-grid__img-wrap img {
   transform: scale(1.04);
 }
  
