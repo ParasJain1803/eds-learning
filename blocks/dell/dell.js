@@ -17,17 +17,21 @@ export default function decorate(block) {
 
       // Find label: any text-bearing element that has no picture/img inside
       // Also check <strong> inside <p> (EDS sometimes bolds the label)
-      let labelText = '';
-      const allEls = [...col.querySelectorAll('p, h1, h2, h3, h4, h5, h6')];
-      for (const el of allEls) {
-        if (!el.querySelector('picture, img')) {
-          const text = el.textContent.trim();
-          if (text) {
-            labelText = text;
-            break;
-          }
-        }
-      }
+      // Replace the label-finding logic with this:
+let labelText = '';
+const allEls = [...col.querySelectorAll('p, h1, h2, h3, h4, h5, h6')];
+for (const el of allEls) {
+  // Extract only text nodes (ignoring picture/img children)
+  const text = [...el.childNodes]
+    .filter((n) => n.nodeType === Node.TEXT_NODE)
+    .map((n) => n.textContent.trim())
+    .filter(Boolean)
+    .join('');
+  if (text) {
+    labelText = text;
+    break;
+  }
+}
 
       // Fallback: check direct text nodes in the col
       if (!labelText) {
