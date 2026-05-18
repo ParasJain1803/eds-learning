@@ -25,13 +25,10 @@
 
 .category-grid__card:hover {
   background: #1a2436;
-  outline-color: rgba(74, 144, 217, 0.45);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55);
 }
 
 .category-grid__label {
-  display: inline-block;
+  display: inline;
   padding: 14px 16px 10px;
   font-size: 0.95rem;
   font-weight: 600;
