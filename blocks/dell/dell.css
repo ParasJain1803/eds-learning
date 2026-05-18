@@ -28,13 +28,17 @@
 }
 
 .category-grid__label {
-  display: inline;
-  padding: 14px 16px 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  background: rgba(10, 15, 25, 0.85);
+  color: #e8eaf0;
   font-size: 0.95rem;
   font-weight: 600;
-  letter-spacing: 0.01em;
-  color: #e8eaf0;
-
+  padding: 8px 14px;
+  border-radius: 0 0 8px 0;
+  z-index: 2;
 }
 
 .category-grid__img-wrap {
@@ -60,4 +64,4 @@
 
 .category-grid__card:hover .category-grid__img-wrap {
    background: linear-gradient(160deg, #3a5a80 0%, #2a4060 100%);
-}
+} 
