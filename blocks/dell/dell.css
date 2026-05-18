@@ -1,5 +1,5 @@
  
-.category-grid {
+.dell {
   --cg-bg:         #0d1117;
   --cg-card-bg:    #141b26;
   --cg-card-hover: #1a2436;
@@ -15,7 +15,7 @@
 }
  
 /* ── Grid layout ──────────────────────────────────────── */
-.category-grid__grid {
+.dell__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--cg-gap);
@@ -24,7 +24,7 @@
 }
  
 /* ── Card ─────────────────────────────────────────────── */
-.category-grid__card {
+.dell__card {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -42,7 +42,7 @@
               box-shadow 0.25s ease;
 }
  
-.category-grid__card:hover {
+.dell__card:hover {
   background: var(--cg-card-hover);
   outline-color: rgba(74, 144, 217, 0.45);
   transform: translateY(-3px);
@@ -50,7 +50,7 @@
 }
  
 /* ── Category label ───────────────────────────────────── */
-.category-grid__label {
+.dell__label {
   display: block;
   padding: 14px 16px 10px;
   font-size: 0.95rem;
@@ -65,7 +65,7 @@
 }
  
 /* ── Image wrapper ────────────────────────────────────── */
-.category-grid__img-wrap {
+.dell__img-wrap {
   flex: 1;
   display: flex;
   align-items: center;
@@ -75,11 +75,11 @@
   min-height: 180px;
 }
  
-.category-grid__img-wrap picture {
+.dell__img-wrap picture {
   display: contents;
 }
  
-.category-grid__img-wrap img {
+.dell__img-wrap img {
   width: 100%;
   height: 200px;
   object-fit: contain;
@@ -88,7 +88,7 @@
   filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.6));
 }
  
-.category-grid__card:hover .category-grid__img-wrap img {
+.dell__card:hover .dell__img-wrap img {
   transform: scale(1.04);
 }
  

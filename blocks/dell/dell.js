@@ -4,14 +4,14 @@ export default function decorate(block) {
 
   // Build new grid wrapper
   const grid = document.createElement('div');
-  grid.classList.add('category-grid__grid');
+  grid.classList.add('dell__grid');
 
   rows.forEach((row) => {
     const cols = [...row.querySelectorAll(':scope > div')];
 
     cols.forEach((col) => {
       const card = document.createElement('a');
-      card.classList.add('category-grid__card');
+      card.classList.add('dell__card');
 
       // First <p> that contains only text → category title
       // First <picture>/<img> → the category image
@@ -25,12 +25,12 @@ export default function decorate(block) {
 
       // Title
       const label = document.createElement('span');
-      label.classList.add('category-grid__label');
+      label.classList.add('dell__label');
       label.textContent = titleEl ? titleEl.textContent.trim() : '';
 
       // Image wrapper
       const imgWrap = document.createElement('div');
-      imgWrap.classList.add('category-grid__img-wrap');
+      imgWrap.classList.add('dell__img-wrap');
       if (picture) {
         imgWrap.append(picture.cloneNode(true));
       }
