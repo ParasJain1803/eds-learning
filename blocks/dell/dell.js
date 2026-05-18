@@ -1,8 +1,6 @@
 export default function decorate(block) {
-  // Get all rows from the authored table
   const rows = [...block.querySelectorAll(':scope > div')];
 
-  // Build new grid wrapper
   const grid = document.createElement('div');
   grid.classList.add('category-grid__grid');
 
@@ -13,22 +11,38 @@ export default function decorate(block) {
       const card = document.createElement('a');
       card.classList.add('category-grid__card');
 
-      // First <p> that contains only text → category title
-      // First <picture>/<img> → the category image
       const picture = col.querySelector('picture, img');
-      const titleEl = [...col.querySelectorAll('p, h1, h2, h3, h4, h5, h6')]
-        .find((el) => el.textContent.trim() && !el.querySelector('picture, img'));
-
-      // Pull out any link wrapping the image or an explicit <a>
       const link = col.querySelector('a');
       if (link) card.href = link.href;
 
-      // Title
+      // Find label: any text-bearing element that has no picture/img inside
+      // Also check <strong> inside <p> (EDS sometimes bolds the label)
+      let labelText = '';
+      const allEls = [...col.querySelectorAll('p, h1, h2, h3, h4, h5, h6')];
+      for (const el of allEls) {
+        if (!el.querySelector('picture, img')) {
+          const text = el.textContent.trim();
+          if (text) {
+            labelText = text;
+            break;
+          }
+        }
+      }
+
+      // Fallback: check direct text nodes in the col
+      if (!labelText) {
+        labelText = [...col.childNodes]
+          .filter((n) => n.nodeType === Node.TEXT_NODE && n.textContent.trim())
+          .map((n) => n.textContent.trim())
+          .join('');
+      }
+
+      console.log('labelText:', labelText, '| col HTML:', col.innerHTML); // debug — remove after fix
+
       const label = document.createElement('span');
       label.classList.add('category-grid__label');
-      label.textContent = titleEl ? titleEl.textContent.trim() : '';
+      label.textContent = labelText;
 
-      // Image wrapper
       const imgWrap = document.createElement('div');
       imgWrap.classList.add('category-grid__img-wrap');
       if (picture) {
