@@ -58,7 +58,7 @@
   padding: 48px 16px 20px;
   background: linear-gradient(160deg, #93a8ba 0%, #c6cace 100%);
   min-height: 200px;
-  aspect-ratio: 1/1;
+  aspect-ratio: 4/3
 }
 
 .dell-category-grid__img-wrap picture {
