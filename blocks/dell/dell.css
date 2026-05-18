@@ -15,6 +15,7 @@
   gap: 18px;
   max-width: 1400px;
   margin: 0 auto;
+  padding: 0 10%;
 }
 
 .dell-category-grid__card {
@@ -57,6 +58,7 @@
   padding: 48px 16px 20px;
   background: linear-gradient(160deg, #93a8ba 0%, #c6cace 100%);
   min-height: 200px;
+  aspect-ratio: 1/1;
 }
 
 .dell-category-grid__img-wrap picture {
